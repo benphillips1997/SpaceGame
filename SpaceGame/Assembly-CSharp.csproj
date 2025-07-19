@@ -62,14 +62,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Population\WorkerSystem.cs" />
+    <Compile Include="Assets\Scripts\PlayerActionSystem.cs" />
     <Compile Include="Assets\Scripts\Resources\FoodSystem.cs" />
+    <Compile Include="Assets\Scripts\SystemRunner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerComponent.cs" />
+    <Compile Include="Assets\Scripts\Population\AddScientistToResearchRequest.cs" />
     <Compile Include="Assets\Scripts\Population\WorkerComponent.cs" />
     <Compile Include="Assets\Scripts\Resources\FoodComponent.cs" />
     <Compile Include="Assets\Scripts\Population\ScientistComponent.cs" />
+    <Compile Include="Assets\Scripts\Population\AddWorkerEvent.cs" />
     <Compile Include="Assets\Scripts\BaseSystem.cs" />
     <Compile Include="Assets\Scripts\Resources\ResearchComponent.cs" />
     <Compile Include="Assets\Scripts\Population\ScientistSystem.cs" />
+    <Compile Include="Assets\Scripts\Population\AddScientistEvent.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Resources\ResearchSystem.cs" />
   </ItemGroup>

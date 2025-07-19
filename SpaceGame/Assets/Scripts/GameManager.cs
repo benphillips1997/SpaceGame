@@ -3,16 +3,13 @@ using Player;
 using Population.Scientist;
 using Population.Worker;
 using Resources;
+using Resources.Research;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private World _world;
-
-    private FoodSystem _foodSystem;
-    private WorkerSystem _workerSystem;
-    private ResearchSystem _researchSystem;
-    private ScientistSystem _scientistSystem;
+    private SystemRunner _systemRunner;
 
     private void Start()
     {
@@ -23,49 +20,46 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _world = World.Create();
+        _systemRunner = new(_world);
 
-        _foodSystem = new(_world);
-        _workerSystem = new(_world);
-        _researchSystem = new(_world);
-        _scientistSystem = new(_world);
-
-
-        // Creates an entity with a FoodComponent.
         player = _world.Create(
             new PlayerComponent(),
             new FoodComponent(),
             new WorkerComponent(),
             new ScientistComponent()
-            );
+        );
 
         researchEntity = _world.Create(
             new ResearchComponent(
                 ResearchClass.ScientificEquipment, ResearchTier.Level1, 6
             )
          );
+
+        _systemRunner.AddSystem(new FoodSystem(_world));
+        _systemRunner.AddSystem(new WorkerSystem(_world));
+        _systemRunner.AddSystem(new ResearchSystem(_world));
+        _systemRunner.AddSystem(new ScientistSystem(_world));
+        _systemRunner.AddSystem(new PlayerActionSystem(_world, player, researchEntity));
+
+
     }
 
     private void Update()
     {
-        _foodSystem.Update();
-        _researchSystem.Update();
+        _systemRunner.Update();
 
 
-        // When button clicked
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            _workerSystem.Update();
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            _scientistSystem.Update();
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            _researchSystem.AddScientistToResearch(researchEntity, player);
-        }
-
-
+//       // When button clicked
+//       if (Input.GetKeyDown(KeyCode.E))
+//       {
+//           //Add WorkerAddEvent
+//           _workerSystem.Update();
+//       }
+//       if (Input.GetKeyDown(KeyCode.F))
+//       {
+//           //Add ScientistAddEvent
+//           _scientistSystem.Update();
+//       }
     }
 
 }
