@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerActionSystem : BaseSystem
 {
+    private readonly QueryDescription _workerButtonClicked = new QueryDescription().WithAll<BuyWorkerButtonClickedEvent>();
+
     // This is not how I want to do this longer term, just quickly moving things around
     private Entity _research;
     private Entity _player;
@@ -18,10 +20,13 @@ public class PlayerActionSystem : BaseSystem
         {
             World.Create(new AddScientistToResearchRequest { Research = _research, player = _player });
         }
-        if (Input.GetKeyDown(KeyCode.E))
+
+        World.Query(in _workerButtonClicked, (Entity ent, ref BuyWorkerButtonClickedEvent ev) =>
         {
             World.Create(new AddWorkerEvent { Player = _player});
-        }
+            World.Destroy(ent);
+        });
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             World.Create(new AddScientistEvent { Player = _player });

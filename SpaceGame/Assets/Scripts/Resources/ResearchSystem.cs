@@ -14,6 +14,12 @@ namespace Resources.Research
 
         public override void Update()
         {
+            TickResearch();
+            AddScientist();
+        }
+
+        private void TickResearch()
+        {
             World.Query(in _researches, (ref ResearchComponent component) =>
             {
                 if (component.ScientistsResearching > 0)
@@ -30,7 +36,10 @@ namespace Resources.Research
                     }
                 }
             });
+        }
 
+        private void AddScientist()
+        {
             World.Query(in _researchAddingScientist, (Entity ent, ref AddScientistToResearchRequest req) =>
             {
                 AddScientistToResearch(req.Research, req.player);
