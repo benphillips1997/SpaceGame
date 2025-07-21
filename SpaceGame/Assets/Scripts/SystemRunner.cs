@@ -16,7 +16,6 @@ public class SystemRunner
         _systems.Add(system);
     }
 
-
     public void Update()
     {
         foreach (var system in _systems)
