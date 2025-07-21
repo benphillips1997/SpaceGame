@@ -15,13 +15,17 @@ namespace Population.Military
 
         public MilitaryComponent(Entity power, Entity armour)
         {
-            if (power.Get<ResearchComponent>().ResearchClass != ResearchClass.Weapons || armour.Get<ResearchComponent>().ResearchClass != ResearchClass.Armour)
+            var powerResearchComp = power.Get<ResearchComponent>();
+            var armourResearchComp = armour.Get<ResearchComponent>();
+
+            if (powerResearchComp.ResearchClass != ResearchClass.Weapons || armourResearchComp.ResearchClass != ResearchClass.Armour)
             {
                 Debug.LogError("Incorrect research class for military");
+                return;
             }
             
-            PowerLevel = power.Get<ResearchComponent>().ResearchTier;
-            DefenceLevel = armour.Get<ResearchComponent>().ResearchTier;
+            PowerLevel = powerResearchComp.ResearchTier;
+            DefenceLevel = armourResearchComp.ResearchTier;
         }
 
         public void AddSoldier(int amount)
@@ -49,12 +53,6 @@ namespace Population.Military
 
         public void UpdateBattle()
         {
-            if (!BattleActive)
-            {
-                Debug.Log("Battle is not active");
-                return;
-            }
-
             RemoveSoldier(1);
         }
     }

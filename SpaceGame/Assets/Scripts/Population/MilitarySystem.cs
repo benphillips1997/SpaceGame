@@ -1,6 +1,7 @@
 using Arch.Core;
 using Arch.Core.Extensions;
 using Arch.Core.Utils;
+using Population.SoldierEvent;
 using UnityEngine;
 
 namespace Population.Military
@@ -27,13 +28,13 @@ namespace Population.Military
             {
                 if (comp.BattleActive)
                 {
-                    if (comp.TimeToNextBattleUpdate - Time.deltaTime < 0)
+                    comp.TimeToNextBattleUpdate -= Time.deltaTime;
+
+                    if (comp.TimeToNextBattleUpdate < 0)
                     {
                         Battle(comp);
                         comp.TimeToNextBattleUpdate = 1;
-                    }
-
-                    comp.TimeToNextBattleUpdate -= Time.deltaTime;
+                    }                    
                 }
             });
 

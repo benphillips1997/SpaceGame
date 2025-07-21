@@ -1,4 +1,5 @@
 using Arch.Core;
+using Population.SoldierEvent;
 using UnityEngine;
 
 public class PlayerActionSystem : BaseSystem

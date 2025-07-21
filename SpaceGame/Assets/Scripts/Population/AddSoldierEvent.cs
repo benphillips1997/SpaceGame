@@ -1,7 +1,9 @@
 using Arch.Core;
-using UnityEngine;
 
-public struct AddSoldierEvent
+namespace Population.SoldierEvent
 {
-    public Entity Player;   
+    public struct AddSoldierEvent
+    {
+        public Entity Player;
+    }
 }
