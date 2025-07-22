@@ -6,10 +6,9 @@ namespace Population.Worker
     {
         public int WorkerCount = 0;
 
-        public void AddWorker(int amount)
+        public int AddWorker(int amount)
         {
-            Debug.Log("Added Worker");
-            WorkerCount += amount;
+            return WorkerCount += amount;
         }
     }
 }
