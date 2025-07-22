@@ -1,4 +1,5 @@
 using Arch.Core;
+using Population.SoldierEvent;
 using UnityEngine;
 
 public class PlayerActionSystem : BaseSystem
@@ -8,6 +9,7 @@ public class PlayerActionSystem : BaseSystem
     // This is not how I want to do this longer term, just quickly moving things around
     private Entity _research;
     private Entity _player;
+
     public PlayerActionSystem(World world, Entity player, Entity research) : base(world)
     {
         _research = research;
@@ -30,6 +32,18 @@ public class PlayerActionSystem : BaseSystem
         if (Input.GetKeyDown(KeyCode.F))
         {
             World.Create(new AddScientistEvent { Player = _player });
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            World.Create(new AddSoldierEvent { Player = _player });
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            World.Create(new StartBattleRequest { Player = _player });
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            World.Create(new StopBattleRequest { Player = _player });
         }
     }
 }

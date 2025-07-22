@@ -56,8 +56,7 @@ namespace Resources.Research
                 {
                     sciComp.AddScientist(-1);
                     res.AddScientist(1);
-                    Debug.Log("Added Scientist");
-
+                    Debug.Log($"Added Scientist to {res.ResearchClass}, level {res.ResearchTier}");
                 }
             }
         }
