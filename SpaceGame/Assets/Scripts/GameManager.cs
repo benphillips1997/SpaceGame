@@ -9,6 +9,10 @@ using Resources.Research;
 using UI.Cash;
 using UI.Workers;
 using UnityEngine;
+using Resources.PlanetResources;
+using Resources.PlayerResources;
+using Space.Planet;
+using UnityEngineInternal;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,7 +43,8 @@ public class GameManager : MonoBehaviour
             new WorkerComponent(),
             new ScientistComponent(),
             new MilitaryComponent(weaponsResearchEntity, armourResearchEntity),
-            new CashComponent()
+            new CashComponent(),
+            new PlayerResourceComponent()
         );
 
         _systemRunner.AddSystem(new FoodSystem(_world));
@@ -49,6 +54,8 @@ public class GameManager : MonoBehaviour
         _systemRunner.AddSystem(new PlayerActionSystem(_world, player, scientificEquipmentResearchEntity));
         _systemRunner.AddSystem(new MilitarySystem(_world));
         _systemRunner.AddSystem(new CashSystem(_world));
+        _systemRunner.AddSystem(new PlanetResourceSystem(_world, player));
+        _systemRunner.AddSystem(new PlanetSystem(_world));
 
         // UI
         _systemRunner.AddSystem(new CashTextSystem(_world));
