@@ -1,5 +1,5 @@
 using Arch.Core;
-using Resources.PlanetResources;
+using Resources.PlanetResource;
 using TMPro;
 using UI.Cash;
 using UnityEngine;
@@ -23,7 +23,11 @@ namespace Space.Planet
             _world = WorldFetcher.Instance;
             _entity = _world.Create(
                 new PlanetComponent(occupiedByPlayer),
-                new PlanetResourceComponent(WoodAmount, MetalAmount, CoalAmount, CropsAmount)
+                new WoodComponent(WoodAmount),
+                new MetalComponent(MetalAmount),
+                new CoalComponent(CoalAmount),
+                new CropsComponent(CropsAmount),
+                new HarvestComponent()
             );
         }
 

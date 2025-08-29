@@ -63,7 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\WorldFetcher.cs" />
     <Compile Include="Assets\Scripts\Resources\CashUpdatedEvent.cs" />
-    <Compile Include="Assets\Scripts\Resources\PlanetResourceSystem.cs" />
+    <Compile Include="Assets\Scripts\Resources\PlayerWoodComponent.cs" />
+    <Compile Include="Assets\Scripts\Resources\PlayerMetalComponent.cs" />
     <Compile Include="Assets\Scripts\Space\PlanetComponent.cs" />
     <Compile Include="Assets\Scripts\Population\WorkerSystem.cs" />
     <Compile Include="Assets\Scripts\Population\MilitarySystem.cs" />
@@ -74,26 +75,32 @@
     <Compile Include="Assets\Scripts\Resources\CashSystem.cs" />
     <Compile Include="Assets\Scripts\UI\WorkersTextComponent.cs" />
     <Compile Include="Assets\Scripts\Space\Planet.cs" />
-    <Compile Include="Assets\Scripts\Resources\PlayerResourceComponent.cs" />
+    <Compile Include="Assets\Scripts\Resources\HarvestComponent.cs" />
+    <Compile Include="Assets\Scripts\Resources\PlayerCropsComponent.cs" />
     <Compile Include="Assets\Scripts\SystemRunner.cs" />
     <Compile Include="Assets\Scripts\UI\WorkersText.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerComponent.cs" />
     <Compile Include="Assets\Scripts\Population\AddScientistToResearchRequest.cs" />
     <Compile Include="Assets\Scripts\Population\WorkerComponent.cs" />
     <Compile Include="Assets\Scripts\Resources\FoodComponent.cs" />
+    <Compile Include="Assets\Scripts\Resources\HarvestSystem.cs" />
+    <Compile Include="Assets\Scripts\Resources\CropsComponent.cs" />
     <Compile Include="Assets\Scripts\UI\CashTextComponent.cs" />
     <Compile Include="Assets\Scripts\Population\ScientistComponent.cs" />
+    <Compile Include="Assets\Scripts\Resources\MetalComponent.cs" />
     <Compile Include="Assets\Scripts\Population\StartBattleRequest.cs" />
     <Compile Include="Assets\Scripts\Population\AddWorkerEvent.cs" />
     <Compile Include="Assets\Exo-planets - NovaShade\Sources Files\Scripts\LightSource.cs" />
+    <Compile Include="Assets\Scripts\Resources\CoalComponent.cs" />
     <Compile Include="Assets\Scripts\BaseSystem.cs" />
     <Compile Include="Assets\Scripts\Resources\ResearchComponent.cs" />
-    <Compile Include="Assets\Scripts\Resources\PlanetResourceComponent.cs" />
     <Compile Include="Assets\Scripts\Population\MilitaryComponent.cs" />
+    <Compile Include="Assets\Scripts\Resources\PlayerCoalComponent.cs" />
     <Compile Include="Assets\Scripts\UI\BuyWorkerButton.cs" />
     <Compile Include="Assets\Scripts\Population\ScientistSystem.cs" />
     <Compile Include="Assets\Scripts\Population\StopBattleRequest.cs" />
     <Compile Include="Assets\Scripts\UI\WorkersTextSystem.cs" />
+    <Compile Include="Assets\Scripts\Resources\WoodComponent.cs" />
     <Compile Include="Assets\Scripts\Space\PlanetSystem.cs" />
     <Compile Include="Assets\Scripts\Population\AddScientistEvent.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -654,6 +661,10 @@
       <HintPath>Assets\Packages\CommunityToolkit.HighPerformance.8.2.2\lib\netstandard2.1\CommunityToolkit.HighPerformance.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@74deb55db2a0\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
@@ -1158,6 +1169,22 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.53f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AssetManager.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetManager.Core.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Common.Runtime.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Common.Runtime.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Common.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Common.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Identity.Editor.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Identity.Editor.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
       <Private>False</Private>
@@ -1226,8 +1253,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cloud.Identity.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Identity.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Assets.Runtime.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Assets.Runtime.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Common.Editor.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Common.Editor.Embedded.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections">
@@ -1258,6 +1297,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cloud.AppLinking.Editor.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.AppLinking.Editor.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
       <Private>False</Private>
@@ -1280,6 +1323,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Identity.Runtime.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Identity.Runtime.Embedded.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
@@ -1306,12 +1353,24 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Settings.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cloud.AppLinking.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.AppLinking.Embedded.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AssetManager.Upload.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AssetManager.Upload.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
@@ -1328,6 +1387,10 @@
     </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.Assets.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.Assets.Embedded.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
@@ -1348,6 +1411,10 @@
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cloud.AppLinking.Runtime.Embedded">
+      <HintPath>Library\ScriptAssemblies\Unity.Cloud.AppLinking.Runtime.Embedded.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
