@@ -11,5 +11,11 @@ namespace Resources.PlanetResource
         {
             CoalAmount = coalAmount;
         }
+
+        public double AddCoal(double amount)
+        {
+            CoalAmount = Math.Max(0, CoalAmount += amount);
+            return CoalAmount;
+        }
     }
 }

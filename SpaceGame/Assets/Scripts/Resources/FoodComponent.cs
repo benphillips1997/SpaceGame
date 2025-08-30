@@ -14,7 +14,6 @@ namespace Resources
             if ((TimeSinceLastTick + Time.deltaTime) >= 1)
             {
                 NumberOfFood += amount;
-                Debug.Log(NumberOfFood);
                 TimeSinceLastTick = 0;
             }
             TimeSinceLastTick += Time.deltaTime;

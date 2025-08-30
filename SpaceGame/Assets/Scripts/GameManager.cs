@@ -11,7 +11,6 @@ using UI.Workers;
 using UnityEngine;
 using Resources.PlanetResource;
 using Space.Planet;
-using Resources.PlayerResource;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,10 +42,10 @@ public class GameManager : MonoBehaviour
             new ScientistComponent(),
             new MilitaryComponent(weaponsResearchEntity, armourResearchEntity),
             new CashComponent(),
-            new PlayerWoodComponent(),
-            new PlayerMetalComponent(),
-            new PlayerCoalComponent(),
-            new PlayerCropsComponent()
+            new WoodComponent(0),
+            new MetalComponent(0),
+            new CoalComponent(0),
+            new CropsComponent(0)
         );
 
         _systemRunner.AddSystem(new FoodSystem(_world));

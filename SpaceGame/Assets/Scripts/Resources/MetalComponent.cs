@@ -11,5 +11,11 @@ namespace Resources.PlanetResource
         {
             MetalAmount = metalAmount;
         }
+
+        public double AddMetal(double amount)
+        {
+            MetalAmount = Math.Max(0, MetalAmount += amount);
+            return MetalAmount;
+        }
     }
 }

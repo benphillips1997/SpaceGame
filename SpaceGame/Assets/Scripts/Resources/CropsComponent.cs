@@ -11,5 +11,10 @@ namespace Resources.PlanetResource
         {
             CropsAmount = cropsAmount;
         }
+        public double AddCrops(double amount)
+        {
+            CropsAmount = Math.Max(0, CropsAmount += amount);
+            return CropsAmount;
+        }
     }
 }

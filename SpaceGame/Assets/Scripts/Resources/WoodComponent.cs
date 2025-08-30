@@ -11,5 +11,11 @@ namespace Resources.PlanetResource
         {
             WoodAmount = woodAmount;
         }
+
+        public double AddWood(double amount)
+        {
+            WoodAmount = Math.Max(0, WoodAmount += amount);
+            return WoodAmount;
+        }
     }
 }

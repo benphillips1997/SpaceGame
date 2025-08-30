@@ -13,7 +13,6 @@ namespace UI {
         public void OnClick()
         {
             _world.Create(new BuyWorkerButtonClickedEvent());
-            Debug.Log("Button Clicked");
         }
     }
 }
