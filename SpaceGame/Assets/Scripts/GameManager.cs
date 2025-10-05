@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _world = World.Create();
-        WorldFetcher.RegisterWorld(_world);
+        _world = WorldFetcher.GetOrRegisterNewWorld();
 
         _systemRunner = new(_world);
 
@@ -53,6 +52,7 @@ public class GameManager : MonoBehaviour
         // UI
         _systemRunner.AddSystem(new CashTextSystem(_world));
         _systemRunner.AddSystem(new WorkersTextSystem(_world));
+        _systemRunner.AddSystem(new GameWindowSystem(_world));
     }
 
     private void Update()
