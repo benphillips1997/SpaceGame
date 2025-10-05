@@ -2,57 +2,49 @@ using Arch.Core;
 using Arch.Core.Extensions;
 using UnityEngine;
 
-public class GameWindowSystem : BaseSystem
+namespace UI
 {
-    private readonly QueryDescription _windowChangeEvent = new QueryDescription().WithAll<WindowChangeEvent>();
-
-    // GameWindows are set. There's only a few of them and we know what they'll be at compile time.
-    // We could Dictionary this part by building a lazy lookup of window type and the entity. Probably not worth it for 7 checks though.
-    private readonly QueryDescription _gameWindows = new QueryDescription().WithAll<GameWindowComponent>();
-
-    public GameWindowSystem(World world) : base(world) { }
-
-    private Entity? _currentWindowEntity;
-    public override void Update()
+    public class GameWindowSystem : BaseSystem
     {
-        World.Query(in _windowChangeEvent, (Entity ent, ref WindowChangeEvent ev) =>
-        {
-            ChangeWindow(ev.type);
-            World.Destroy(ent);
-        });
+        private readonly QueryDescription _windowChangeEvent = new QueryDescription().WithAll<WindowChangeEvent>();
 
-    }
+        // GameWindows are set. There's only a few of them and we know what they'll be at compile time.
+        // We could Dictionary this part by building a lazy lookup of window type and the entity. Probably not worth it for 7 checks though.
+        private readonly QueryDescription _gameWindows = new QueryDescription().WithAll<GameWindowComponent>();
 
-    private void ChangeWindow(NavMenuButtonType windowType)
-    {
-        if (_currentWindowEntity.HasValue)
+        public GameWindowSystem(World world) : base(world) { }
+
+        private Entity? _currentWindowEntity;
+        public override void Update()
         {
-            if (_currentWindowEntity.Value.TryGet<GameWindowComponent>(out var comp))
+            World.Query(in _windowChangeEvent, (Entity ent, ref WindowChangeEvent ev) =>
             {
-                if (comp.windowType == windowType) return;
-                comp.window.SetActive(false);
-            }
+                ChangeWindow(ev.type);
+                World.Destroy(ent);
+            });
 
         }
 
-        World.Query(in _gameWindows, (Entity ent, ref GameWindowComponent comp) =>
+        private void ChangeWindow(GameWindowType windowType)
         {
-            Debug.Log("Here");
-            Debug.Log($"Type: [{comp.windowType}]");
-            if (comp.windowType == windowType)
+            if (_currentWindowEntity.HasValue)
             {
-                comp.window.SetActive(true);
-                _currentWindowEntity = ent;
-            }
-        });
-    }
-}
+                if (_currentWindowEntity.Value.TryGet<GameWindowComponent>(out var comp))
+                {
+                    if (comp.windowType == windowType) return;
+                    comp.window.SetActive(false);
+                }
 
-public struct WindowChangeEvent
-{
-    public NavMenuButtonType type;
-    public WindowChangeEvent(NavMenuButtonType t)
-    {
-        type = t;
+            }
+
+            World.Query(in _gameWindows, (Entity ent, ref GameWindowComponent comp) =>
+            {
+                if (comp.windowType == windowType)
+                {
+                    comp.window.SetActive(true);
+                    _currentWindowEntity = ent;
+                }
+            });
+        }
     }
 }

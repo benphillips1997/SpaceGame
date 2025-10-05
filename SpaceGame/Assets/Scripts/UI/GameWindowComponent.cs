@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class GameWindowComponent
+namespace UI
 {
-    public NavMenuButtonType windowType;
-    public readonly GameObject window;
-    public GameWindowComponent(NavMenuButtonType type, GameObject obj)
+    public class GameWindowComponent
     {
-        window = obj;
-        windowType = type;
-    }
+        public GameWindowType windowType;
+        public readonly GameObject window;
+        public GameWindowComponent(GameWindowType type, GameObject obj)
+        {
+            window = obj;
+            windowType = type;
+        }
 
+    }
 }

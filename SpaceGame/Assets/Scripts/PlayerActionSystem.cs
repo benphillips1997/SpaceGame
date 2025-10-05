@@ -1,5 +1,6 @@
 using Arch.Core;
 using Population.SoldierEvent;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class PlayerActionSystem : BaseSystem
     // This is not how I want to do this longer term, just quickly moving things around
     private Entity _research;
     private Entity _player;
-    private Button _lastClickedButton;
+    private Button _lastClickedButton; // This should be ECS'd similar to the window change event.
 
     public PlayerActionSystem(World world, Entity player, Entity research) : base(world)
     {

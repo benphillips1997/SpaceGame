@@ -1,16 +1,17 @@
 using Arch.Core;
 using Player;
+using Population.Military;
 using Population.Scientist;
 using Population.Worker;
 using Resources;
-using Population.Military;
 using Resources.Cash;
+using Resources.PlanetResource;
 using Resources.Research;
+using Space.Planet;
+using UI;
 using UI.Cash;
 using UI.Workers;
 using UnityEngine;
-using Resources.PlanetResource;
-using Space.Planet;
 
 public class GameManager : MonoBehaviour
 {
