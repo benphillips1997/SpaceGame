@@ -13,7 +13,7 @@ namespace UI.Workers
         [SerializeField]
         private TextMeshProUGUI cashText;
 
-        private double _workersAmount = 0;
+        private int _workersAmount = 0;
 
         private Entity _entity;
 
@@ -31,7 +31,10 @@ namespace UI.Workers
         private void UpdateText(int newValue)
         {
             if (newValue != _workersAmount)
+            {
+                _workersAmount = newValue;
                 UpdateText(newValue.ToString());
+            }
         }
 
         private void Update()
