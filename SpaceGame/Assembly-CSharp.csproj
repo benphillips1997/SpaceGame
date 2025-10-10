@@ -61,10 +61,12 @@
     <Analyzer Include="D:\Unity\6000.0.53f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI\WindowChangeEvent.cs" />
     <Compile Include="Assets\Scripts\WorldFetcher.cs" />
     <Compile Include="Assets\Scripts\Resources\CashUpdatedEvent.cs" />
     <Compile Include="Assets\Scripts\Space\PlanetComponent.cs" />
     <Compile Include="Assets\Scripts\Population\WorkerSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\NavMenuButton.cs" />
     <Compile Include="Assets\Scripts\Population\MilitarySystem.cs" />
     <Compile Include="Assets\Scripts\UI\CashText.cs" />
     <Compile Include="Assets\Scripts\PlayerActionSystem.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Assets\Scripts\UI\WorkersTextComponent.cs" />
     <Compile Include="Assets\Scripts\Space\Planet.cs" />
     <Compile Include="Assets\Scripts\Resources\HarvestComponent.cs" />
+    <Compile Include="Assets\Scripts\UI\GameWindowType.cs" />
     <Compile Include="Assets\Scripts\SystemRunner.cs" />
     <Compile Include="Assets\Scripts\UI\WorkersText.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerComponent.cs" />
@@ -81,12 +84,15 @@
     <Compile Include="Assets\Scripts\Population\WorkerComponent.cs" />
     <Compile Include="Assets\Scripts\Resources\FoodComponent.cs" />
     <Compile Include="Assets\Scripts\Resources\HarvestSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\GameWindow.cs" />
     <Compile Include="Assets\Scripts\Resources\CropsComponent.cs" />
     <Compile Include="Assets\Scripts\UI\CashTextComponent.cs" />
     <Compile Include="Assets\Scripts\Population\ScientistComponent.cs" />
     <Compile Include="Assets\Scripts\Resources\MetalComponent.cs" />
     <Compile Include="Assets\Scripts\Population\StartBattleRequest.cs" />
     <Compile Include="Assets\Scripts\Population\AddWorkerEvent.cs" />
+    <Compile Include="Assets\Scripts\UI\GameWindowComponent.cs" />
+    <Compile Include="Assets\Scripts\UI\GameWindowSystem.cs" />
     <Compile Include="Assets\Scripts\Resources\CoalComponent.cs" />
     <Compile Include="Assets\Scripts\BaseSystem.cs" />
     <Compile Include="Assets\Scripts\Resources\ResearchComponent.cs" />
@@ -102,6 +108,7 @@
     <Compile Include="Assets\Scripts\UI\CashTextSystem.cs" />
     <Compile Include="Assets\Scripts\Resources\CashComponent.cs" />
     <Compile Include="Assets\Scripts\Resources\ResearchSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\NavMenuButtonClickedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

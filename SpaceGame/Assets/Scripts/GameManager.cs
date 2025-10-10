@@ -1,16 +1,17 @@
 using Arch.Core;
 using Player;
+using Population.Military;
 using Population.Scientist;
 using Population.Worker;
 using Resources;
-using Population.Military;
 using Resources.Cash;
+using Resources.PlanetResource;
 using Resources.Research;
+using Space.Planet;
+using UI;
 using UI.Cash;
 using UI.Workers;
 using UnityEngine;
-using Resources.PlanetResource;
-using Space.Planet;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,8 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _world = World.Create();
-        WorldFetcher.RegisterWorld(_world);
+        _world = WorldFetcher.GetOrRegisterNewWorld();
 
         _systemRunner = new(_world);
 
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         // UI
         _systemRunner.AddSystem(new CashTextSystem(_world));
         _systemRunner.AddSystem(new WorkersTextSystem(_world));
+        _systemRunner.AddSystem(new GameWindowSystem(_world));
     }
 
     private void Update()
