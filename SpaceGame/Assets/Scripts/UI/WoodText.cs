@@ -1,21 +1,22 @@
 using Arch.Core;
 using Arch.Core.Extensions;
 using TMPro;
+using UI.Workers;
 using UnityEngine;
 
-namespace UI.Workers
+namespace UI.Wood
 {
-    public class WorkersText : BaseText
+    public class WoodText : BaseText
     {
         private void Start()
         {
             _world = WorldFetcher.Instance;
-            _entity = _world.Create(new WorkersTextComponent());
+            _entity = _world.Create(new WoodTextComponent());
         }
 
         private void Update()
         {
-            UpdateText(_entity.Get<WorkersTextComponent>().Amount);
+            UpdateText(_entity.Get<WoodTextComponent>().Amount);
         }
     }
 }
