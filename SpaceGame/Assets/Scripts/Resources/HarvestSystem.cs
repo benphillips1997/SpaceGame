@@ -47,10 +47,8 @@ namespace Resources.PlanetResource
                     {
                         int divider = GetDivider(planet);
 
-                        playerWood.AddWood(woodComp.WoodAmount / divider);
+                        World.Create(new WoodUpdatedEvent() { NewValue = playerWood.AddWood(woodComp.WoodAmount / divider) });
                         // Do planets lose the resources too? That's something we could consider adding here.
-
-                        harvComp.TimeSinceLastTick = 0;
                     }
                 }
             });
@@ -63,9 +61,7 @@ namespace Resources.PlanetResource
                     {
                         int divider = GetDivider(planet);
 
-                        playerMetal.AddMetal(metalComp.MetalAmount / divider);
-
-                        harvComp.TimeSinceLastTick = 0;
+                        World.Create(new MetalUpdatedEvent() { NewValue = playerMetal.AddMetal(metalComp.MetalAmount / divider) });
                     }
                 }
             });
@@ -78,9 +74,7 @@ namespace Resources.PlanetResource
                     {
                         int divider = GetDivider(planet);
 
-                        playerCoal.AddCoal(coalComp.CoalAmount / divider);
-
-                        harvComp.TimeSinceLastTick = 0;
+                        World.Create(new CoalUpdatedEvent() { NewValue = playerCoal.AddCoal(coalComp.CoalAmount / divider) });
                     }
                 }
             });
@@ -93,9 +87,7 @@ namespace Resources.PlanetResource
                     {
                         int divider = GetDivider(planet);
 
-                        playerCrops.AddCrops(cropsComp.CropsAmount / divider);
-
-                        harvComp.TimeSinceLastTick = 0;
+                        World.Create(new CropsUpdatedEvent() { NewValue = playerCrops.AddCrops(cropsComp.CropsAmount / divider) });
                     }
                 }
             });
@@ -105,6 +97,11 @@ namespace Resources.PlanetResource
         {
             World.Query(in _harvestablePlanets, (ref PlanetComponent planet, ref HarvestComponent harvComp) =>
             {
+                if (harvComp.TimeSinceLastTick >= 1)
+                {
+                    harvComp.TimeSinceLastTick = 0;
+                }
+
                 harvComp.TimeSinceLastTick += Time.deltaTime;
             });
         }

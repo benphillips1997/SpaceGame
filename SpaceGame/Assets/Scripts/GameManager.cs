@@ -10,6 +10,10 @@ using Resources.Research;
 using Space.Planet;
 using UI;
 using UI.Cash;
+using UI.Coal;
+using UI.Crops;
+using UI.Metal;
+using UI.Wood;
 using UI.Workers;
 using UnityEngine;
 
@@ -62,6 +66,10 @@ public class GameManager : MonoBehaviour
         _systemRunner.AddSystem(new CashTextSystem(_world));
         _systemRunner.AddSystem(new WorkersTextSystem(_world));
         _systemRunner.AddSystem(new GameWindowSystem(_world));
+        _systemRunner.AddSystem(new WoodTextSystem(_world));
+        _systemRunner.AddSystem(new CoalTextSystem(_world));
+        _systemRunner.AddSystem(new MetalTextSystem(_world));
+        _systemRunner.AddSystem(new CropsTextSystem(_world));
     }
 
     private void Update()

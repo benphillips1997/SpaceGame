@@ -16,6 +16,7 @@ namespace Space.Planet
         private OccupiedByPlayer occupiedByPlayer;
 
         [SerializeField]
+        // this is the number of resource gained per tick
         private double WoodAmount, MetalAmount, CoalAmount, CropsAmount;
 
         private void Start()
